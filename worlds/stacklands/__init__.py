@@ -29,9 +29,6 @@ class StacklandsWorld(World):
     def __init__(self, multiworld, player):
         super(StacklandsWorld, self).__init__(multiworld, player)
 
-    def set_rules(self):
-        create_rules()
-
     def create_item(self, name: str) -> "StacklandsItem":
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id - 1
@@ -71,9 +68,7 @@ class StacklandsWorld(World):
         menu_region.connect(main_region)
 
     def set_rules(self):
-        print("Skipping set_rules")
-        #create_rules(self, location_table)
-
+        create_rules(self, location_table)
 class StacklandsItem(Item):
     game: str = "Stacklands"
 

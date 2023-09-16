@@ -22,7 +22,7 @@ def create_rules(self, location_table):
         if "Mainland" in loc["potentialBoosterPacks"]:
             set_rule(world.get_location(loc["name"], self.player),
                 lambda state: state.has_any(set(mainland_packs), player))
-        else:
+        elif len(loc["potentialBoosterPacks"]) > 0:
             set_rule(world.get_location(loc["name"], self.player),
                 lambda state: state.has_any(set(loc["potentialBoosterPacks"]), player))
         if len(loc["ideas"]) > 0:
