@@ -22,10 +22,10 @@ item_table: List[ItemDict] = [
     {"name": "Seeking Wisdom Booster Pack", "location": 1, "count": 1, "id": base_id + 2, "classification": ItemClassification.progression},
     {"name": "Reap & Sow Booster Pack", "location": 1, "count": 1, "id": base_id + 3, "classification": ItemClassification.progression},
     {"name": "Curious Cuisine Booster Pack", "location": 1, "count": 1, "id": base_id + 4, "classification": ItemClassification.progression},
-    {"name": "Logic and Reason Booster Pack", "location": 1, "count": 1, "id": base_id + 5, "classification": ItemClassification.progression},
-    {"name": "The Armory Booster Pack", "location": 1, "count": 1, "id": base_id + 6, "classification": ItemClassification.progression},
-    {"name": "Explorers Booster Pack", "location": 1, "count": 1, "id": base_id + 7, "classification": ItemClassification.progression},
-    {"name": "Order and Structure Booster Pack", "location": 1, "count": 1, "id": base_id + 8, "classification": ItemClassification.progression},
+    {"name": "Logic and Reason Booster Pack", "location": 1, "count": 1, "id": base_id + 5, "classification": ItemClassification.progression_skip_balancing},
+    {"name": "The Armory Booster Pack", "location": 1, "count": 1, "id": base_id + 6, "classification": ItemClassification.progression_skip_balancing},
+    {"name": "Explorers Booster Pack", "location": 1, "count": 1, "id": base_id + 7, "classification": ItemClassification.progression_skip_balancing},
+    {"name": "Order and Structure Booster Pack", "location": 1, "count": 1, "id": base_id + 8, "classification": ItemClassification.progression_skip_balancing},
 
     # Mainland Ideas
     {"name": "Idea: Animal Pen", "location": 1, "count": 1, "id": base_id + 9, "classification": ItemClassification.filler},
@@ -92,6 +92,7 @@ item_table: List[ItemDict] = [
 ]
 
 group_table: Dict[str, Set[str]] = {
+    "Basic Mainland Booster Packs": {"Humble Beginnings Booster Pack", "Seeking Wisdom Booster Pack", "Reap & Sow Booster Pack", "Curious Cuisine Booster Pack"},
     "Mainland Booster Packs": {"Humble Beginnings Booster Pack", "Seeking Wisdom Booster Pack", "Reap & Sow Booster Pack", "Curious Cuisine Booster Pack", "Logic and Reason Booster Pack", "The Armory Booster Pack", "Explorers Booster Pack", "Order and Structure Booster Pack"},
     "Mainland Ideas": set(idea["name"] for idea in item_table if idea["location"] == 1 and idea["name"].startswith("Idea:")),
 }
