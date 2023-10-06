@@ -92,7 +92,8 @@ item_table: List[ItemDict] = [
 ]
 
 group_table: Dict[str, Set[str]] = {
-    "Basic Mainland Booster Packs": {"Humble Beginnings Booster Pack", "Seeking Wisdom Booster Pack", "Reap & Sow Booster Pack", "Curious Cuisine Booster Pack"},
+    "Basic Mainland Booster Packs": {"Humble Beginnings Booster Pack", "Seeking Wisdom Booster Pack"},
     "Mainland Booster Packs": {"Humble Beginnings Booster Pack", "Seeking Wisdom Booster Pack", "Reap & Sow Booster Pack", "Curious Cuisine Booster Pack", "Logic and Reason Booster Pack", "The Armory Booster Pack", "Explorers Booster Pack", "Order and Structure Booster Pack"},
     "Mainland Ideas": set(idea["name"] for idea in item_table if idea["location"] == 1 and idea["name"].startswith("Idea:")),
+    "Obtainable": {"Idea: Stick"},
 }
