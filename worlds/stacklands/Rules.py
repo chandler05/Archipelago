@@ -1,4 +1,4 @@
-from worlds.generic.Rules import set_rule
+from worlds.generic.Rules import set_rule, add_rule
 
 def create_rules(self, location_table):
     world = self.multiworld
@@ -14,11 +14,11 @@ def create_rules(self, location_table):
 
     for loc in location_table:
         if len(loc["potentialBoosterPacks"]) > 0:
-            set_rule(world.get_location(loc["name"], self.player),
+            add_rule(world.get_location(loc["name"], self.player),
                 lambda state: state.has_any(set(loc["potentialBoosterPacks"]), player))
         if loc["requireBasicPacks"]:
-            set_rule(world.get_location(loc["name"], self.player),
+            add_rule(world.get_location(loc["name"], self.player),
                 lambda state: state.has_group("Basic Mainland Booster Packs", player))
         if len(loc["ideas"]) > 0:
-            set_rule(world.get_location(loc["name"], self.player),
+            add_rule(world.get_location(loc["name"], self.player),
                 lambda state: state.has_all(set(loc["ideas"]), player))
