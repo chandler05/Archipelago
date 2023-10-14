@@ -4,7 +4,7 @@ from worlds.AutoWorld import World, WebWorld
 from .Items import item_table, group_table, base_id
 from .Locations import location_table
 from .Rules import create_rules
-#from .Options import stacklands_options
+from .Options import stacklands_options
 
 class StacklandsWeb(WebWorld):
     theme = "jungle"
@@ -22,7 +22,7 @@ class StacklandsWorld(World):
     location_name_to_id = {loc["name"]: loc["id"] for loc in location_table}
 
     item_name_groups = group_table
-    #option_definitions = stacklands_options
+    option_definitions = stacklands_options
 
     required_client_version = (0, 1, 9)
 
@@ -66,6 +66,22 @@ class StacklandsWorld(World):
         self.multiworld.regions.append(main_region)
 
         menu_region.connect(main_region)
+
+    def fill_slot_data(self) -> Dict[str, Any]:
+        slot_data: Dict[str, Any] = {}
+
+        world = self.multiworld
+        player = self.player
+
+        settings = {
+            "goal": world.goal[player].value
+        }
+    
+        slot_data = {
+            "settings": settings
+        }
+    
+        return slot_data
 
     def set_rules(self):
         create_rules(self, location_table)

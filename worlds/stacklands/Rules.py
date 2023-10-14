@@ -5,9 +5,9 @@ def create_rules(self, location_table):
     player = self.player
 
     set_rule(world.get_location("Have 5 Ideas", self.player),
-        lambda state: state.group_count("Mainland Ideas", player) >= 5)
+        lambda state: state.count_group("Mainland Ideas", player) >= 5)
     set_rule(world.get_location("Have 10 Ideas", self.player),
-        lambda state: state.group_count("Mainland Ideas", player) >= 10)
+        lambda state: state.count_group("Mainland Ideas", player) >= 10)
     
     set_rule(world.get_location("Unlock All Packs", self.player),
         lambda state: state.has_group("Mainland Booster Packs", player, 8))
