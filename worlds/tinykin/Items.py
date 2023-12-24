@@ -14,7 +14,7 @@ item_table: List[ItemDict] = [
     {"name": "Soapboard", "id": base_id + 2, "count": 1, "classification": ItemClassification.progression},
     #{"name": "Sanctar Key", "id": base_id + 3, "count": 1, "classification": ItemClassification.progression}, Unlock door by default
     {"name": "Play Button", "id": base_id + 3, "count": 1, "classification": ItemClassification.progression},
-    {"name": "Sphinx's Nose", "id": base_id + 3, "count": 1, "classification": ItemClassification.useful},
+    {"name": "Sphinx's Nose", "id": base_id + 4, "count": 1, "classification": ItemClassification.useful},
     {"name": "Mail (City of Sanctar)", "id": base_id + 5, "count": 4, "classification": ItemClassification.useful},
     {"name": "Ring (City of Sanctar)", "id": base_id + 6, "count": 1, "classification": ItemClassification.useful},
     {"name": "Screwdriver (City of Sanctar)", "id": base_id + 7, "count": 1, "classification": ItemClassification.useful},

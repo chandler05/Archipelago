@@ -9,7 +9,7 @@ from .Rules import create_rules
 from .Options import TinykinOptions
 
 class TinykinWeb(WebWorld):
-    theme = "party"
+    theme = "partyTime"
 
 class TinykinWorld(World):
     """
