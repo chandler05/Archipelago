@@ -24,7 +24,7 @@ class VacationSimWorld(World):
     Explore activity-rich destinations filled with a colorful cast of Bots and endless interactions to approximate recreation.
     """
 
-    game: str = "Vacation Simulator"
+    game = "Vacation Simulator"
     web = VacationSimWeb()
     data_version = 2
 
@@ -43,17 +43,14 @@ class VacationSimWorld(World):
     def __init__(self, multiworld, player):
         super(VacationSimWorld, self).__init__(multiworld, player)
 
-    def set_rules(self):
-        create_rules()
-
     def create_item(self, name: str) -> "VacationSimItem":
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id - 1
 
         return VacationSimItem(name, item_table[id]["classification"], item_id, player=self.player)
-
-    def create_event(self, event: str):
-        return VacationSimItem(event, ItemClassification.progression_skip_balancing, None, self.player)
+    
+    def get_filler_item_name(self) -> str:
+        return "Positive Reinforcement"
 
     def create_items(self) -> None:
         for item in item_table:
@@ -132,10 +129,10 @@ class VacationSimWorld(World):
         self.multiworld.regions.append(overlook)
 
         self.multiworld.completion_condition[self.player] = lambda state: (state.has_group("Gates", self.player, 3)
-            and state.has("Memory (Vacation Beach)", self.player, self.options.beach_memory_count)
-            and state.has("Memory (Vacation Forest)", self.player, self.options.forest_memory_count)
-            and state.has("Memory (Vacation Mountain)", self.player, self.options.mountain_memory_count)
-            and state.has_group("Memories", self.player, self.options.final_memory_count))
+            and state.has_group("Memories", self.player, self.options.final_memory_count)
+            and state.can_reach(dive_site, self.player)
+            and state.can_reach(hiking_trail, self.player)
+            and state.can_reach(overlook, self.player))
 
     def set_rules(self):
         create_rules(self, location_table)
