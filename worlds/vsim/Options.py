@@ -13,14 +13,14 @@ class BeachMemories(Range):
     """The number of Vacation Beach Memories required to unlock the Dive Site."""
     display_name = "Vacation Beach Memory Requirement"
     range_start = 1
-    range_end = 18
+    range_end = 15
     default = 10
 
 class ForestMemories(Range):
     """The number of Vacation Forest Memories required to unlock the Hiking Trail."""
     display_name = "Vacation Forest Memory Requirement"
     range_start = 1
-    range_end = 14
+    range_end = 15
     default = 10
 
 class MountainMemories(Range):

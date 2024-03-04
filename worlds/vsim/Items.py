@@ -16,8 +16,7 @@ item_table: List[ItemDict] = [
     {"name": "Vacation Beach Gate Unlock", "id": base_id + 4, "count": 1, "classification": ItemClassification.progression},
     {"name": "Vacation Forest Gate Unlock", "id": base_id + 5, "count": 1, "classification": ItemClassification.progression},
     {"name": "Vacation Mountain Gate Unlock", "id": base_id + 6, "count": 1, "classification": ItemClassification.progression},
-    {"name": "Camera", "id": base_id + 7, "count": 1, "classification": ItemClassification.progression},
-    {"name": "Regional Currency", "id": base_id + 11, "count": 0, "classification": ItemClassification.filler},
+    {"name": "Camera", "id": base_id + 7, "count": 1, "classification": ItemClassification.progression}
 ]
 
 group_table: Dict[str, Set[str]] = {

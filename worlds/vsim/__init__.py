@@ -138,7 +138,6 @@ class VacationSimWorld(World):
         create_rules(self, location_table)
 
     def fill_slot_data(self) -> Dict[str, Any]:
-        slot_data: Dict[str, Any] = {}
         locations: Dict[int, Any] = {}
 
         multiworld = self.multiworld

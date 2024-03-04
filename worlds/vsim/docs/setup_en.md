@@ -1,9 +1,8 @@
-# A Short Hike Multiworld Setup Guide
+# Vacation Simulator Multiworld Setup Guide
 
 ## Required Software
 
-- A Short Hike: [Steam](https://store.steampowered.com/app/1055540/A_Short_Hike/)
-    - The Epic Games version of A Short Hike will also work.
+- Vacation Simulator: [Steam](https://store.steampowered.com/app/726830/Vacation_Simulator/)
 - A Short Hike Modding Tools: [GitHub](https://github.com/BrandenEK/AShortHike.ModdingTools)
 - A Short Hike Randomizer: [GitHub](https://github.com/BrandenEK/AShortHike.Randomizer)
 
