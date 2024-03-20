@@ -40,9 +40,6 @@ class VacationSimWorld(World):
 
     required_client_version = (0, 4, 4)
 
-    def __init__(self, multiworld, player):
-        super(VacationSimWorld, self).__init__(multiworld, player)
-
     def create_item(self, name: str) -> "VacationSimItem":
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id - 1
