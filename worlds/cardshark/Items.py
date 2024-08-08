@@ -1,0 +1,213 @@
+from BaseClasses import ItemClassification
+from typing import TypedDict, Dict, List, Set
+
+class ItemDict(TypedDict):
+    name: str
+    id: int
+    count: int
+    classification: ItemClassification
+
+base_id = 2022060200
+
+item_table: List[ItemDict] = [
+    {"name": "The Three Card Monte", "id": base_id, "count": 1, "classification": ItemClassification.progression}, # Given to the player at the start of the game
+]
+
+combined_item_table: List[ItemDict] = [
+    {"name": "The Bottle of Cahors", "id": base_id + 1, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Dishevelled Gatherer", "id": base_id + 2, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Indiscreet Fingers", "id": base_id + 3, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Indiscreet Thief", "id": base_id + 4, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Coin Flip", "id": base_id + 5, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Bottle of Bordeaux", "id": base_id + 6, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Stolen Card", "id": base_id + 7, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Bottle of Burgundy", "id": base_id + 8, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Card in a Hat", "id": base_id + 9, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Shiner", "id": base_id + 10, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Bent Card", "id": base_id + 11, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Oblivious Stooge", "id": base_id + 12, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Constant Gatherer", "id": base_id + 13, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Baby False Shuffle", "id": base_id + 14, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Duel", "id": base_id + 15, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Stacked Shuffle", "id": base_id + 16, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Stealthy Painter", "id": base_id + 17, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Brush and The Fan", "id": base_id + 18, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Beginner Stack", "id": base_id + 19, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Improvised Painter", "id": base_id + 20, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Mirror and The Fan", "id": base_id + 21, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Bent Dealer", "id": base_id + 21, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Transparent Stack", "id": base_id + 22, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Smeared Fan", "id": base_id + 23, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Comte's Gambit", "id": base_id + 24, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Erdnase Stack", "id": base_id + 25, "count": 1, "classification": ItemClassification.progression},
+    {"name": "The Expert Dealer", "id": base_id + 26, "count": 1, "classification": ItemClassification.progression},
+]
+
+split_item_table: List[ItemDict] = [
+    {"name": "Wine Glimpse", "id": base_id + 27, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Wipe Signal", "id": base_id + 28, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Full Harvest", "id": base_id + 29, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Ineffective Shuffle", "id": base_id + 30, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Dealer's Glimpse", "id": base_id + 31, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Pinch and Drop Signal", "id": base_id + 32, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Twin Deck Theft", "id": base_id + 33, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Steady Coin", "id": base_id + 34, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Dog-Eared Card", "id": base_id + 35, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Sticky Hand", "id": base_id + 36, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Single Card Shuffle", "id": base_id + 37, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Twin Deck Stack", "id": base_id + 38, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Card Fling", "id": base_id + 39, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Shiner Glimpse", "id": base_id + 40, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Crooked Card", "id": base_id + 41, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Top Drag", "id": base_id + 42, "count": 1, "classification": ItemClassification.progression},
+    {"name": "False Riffle Shuffle", "id": base_id + 43, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Innocent Cut", "id": base_id + 44, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Baby Shuffle", "id": base_id + 45, "count": 1, "classification": ItemClassification.progression},
+    {"name": "False Cut", "id": base_id + 46, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Sword Duel", "id": base_id + 47, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Bottom Drag", "id": base_id + 48, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Pincer Shuffle", "id": base_id + 49, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Blank Cut", "id": base_id + 50, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Painter", "id": base_id + 51, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Mirror Glimpse", "id": base_id + 52, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Fan Signal", "id": base_id + 53, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Second Deal", "id": base_id + 54, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Palm Glimpse", "id": base_id + 55, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Stained Deck", "id": base_id + 56, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Shark Deal", "id": base_id + 57, "count": 1, "classification": ItemClassification.progression},
+    {"name": "Erdnase Shuffle", "id": base_id + 58, "count": 1, "classification": ItemClassification.progression},
+]
+
+trick_map: Dict[str, List[str]] = {
+    "The Three Card Monte": ["The Three Card Monte"],
+    "The Bottle of Cahors": ["Wine Glimpse", "Wipe Signal"],
+    "The Dishevelled Gatherer": ["Full Harvest", "Ineffective Shuffle"],
+    "The Indiscreet Fingers": ["Dealer's Glimpse", "Pinch and Drop Signal"],
+    "The Indiscreet Thief": ["Twin Deck Theft"],
+    "The Coin Flip": ["Steady Coin"],
+    "The Bottle of Bordeaux": ["Wine Glimpse", "Wipe Signal", "Dog-Eared Card"],
+    "The Stolen Card": ["Sticky Hand", "Single Card Shuffle"],
+    "The Bottle of Burgundy": ["Wine Glimpse", "Wipe Signal", "Twin Deck Stack"],
+    "The Card in a Hat": ["Card Fling"],
+    "The Shiner": ["Shiner Glimpse", "Pinch and Drop Signal"],
+    "The Bent Card": ["Crooked Card", "Single Card Shuffle"],
+    "The Oblivious Stooge": ["Top Drag", "False Riffle Shuffle", "Innocent Cut"],
+    "The Constant Gatherer": ["Full Harvest", "False Riffle Shuffle", "False Cut"],
+    "The Baby False Shuffle": ["Top Drag", "Baby Shuffle", "False Cut"],
+    "The Duel": ["Sword Duel"],
+    "The Stacked Shuffle": ["Bottom Drag", "Pincer Shuffle", "False Cut", "Blank Cut"],
+    "The Stealthy Painter": ["Painter", "Sticky Hand", "Pinch and Drop Signal"],
+    "The Brush and The Fan": ["Painter", "Mirror Glimpse", "Fan Signal"],
+    "The Beginner Stack": ["Top Drag", "Ineffective Shuffle"],
+    "The Improvised Painter": ["Shiner Glimpse", "Pinch and Drop Signal", "Painter"],
+    "The Mirror and The Fan": ["Mirror Glimpse", "Fan Signal", "Twin Deck Stack"],
+    "The Bent Dealer": ["Crooked Card", "Sticky Hand", "Second Deal"],
+    "The Transparent Stack": ["Palm Glimpse", "Pincer Shuffle", "False Cut"],
+    "The Smeared Fan": ["Shiner Glimpse", "Fan Signal", "Stained Deck", "Second Deal"],
+    "The Comte's Gambit": ["Palm Glimpse", "Second Deal", "Shark Deal"],
+    "The Erdnase Stack": ["Sticky Hand", "Full Harvest", "Erdnase Shuffle", "Blank Cut"],
+    "The Expert Dealer": ["Bottom Drag", "False Riffle Shuffle", "Palm Glimpse", "Shark Deal"],
+}
+
+group_table: Dict[str, Set[str]] = {
+    "card_tricks": {
+        "The Bottle of Cahors",
+        "The Dishevelled Gatherer",
+        "The Indiscreet Fingers",
+        "The Indiscreet Thief",
+        "The Coin Flip",
+        "The Bottle of Bordeaux",
+        "The Stolen Card",
+        "The Bottle of Burgundy",
+        "The Card in a Hat",
+        "The Shiner",
+        "The Bent Card",
+        "The Oblivious Stooge",
+        "The Constant Gatherer",
+        "The Baby False Shuffle",
+        "The Duel",
+        "The Stacked Shuffle",
+        "The Stealthy Painter",
+        "The Brush and The Fan",
+        "The Beginner Stack",
+        "The Improvised Painter",
+        "The Mirror and The Fan",
+        "The Bent Dealer",
+        "The Transparent Stack",
+        "The Smeared Fan",
+        "The Comte's Gambit",
+        "The Erdnase Stack",
+        "The Expert Dealer",
+    },
+
+    "split_card_tricks": {
+        "Wine Glimpse",
+        "Wipe Signal",
+        "Full Harvest",
+        "Ineffective Shuffle",
+        "Dealer's Glimpse",
+        "Pinch and Drop Signal",
+        "Twin Deck Theft",
+        "Steady Coin",
+        "Dog-Eared Card",
+        "Sticky Hand",
+        "Single Card Shuffle",
+        "Twin Deck Stack",
+        "Card Fling",
+        "Shiner Glimpse",
+        "Crooked Card",
+        "Top Drag",
+        "False Riffle Shuffle",
+        "Innocent Cut",
+        "Baby Shuffle",
+        "False Cut",
+        "Sword Duel",
+        "Bottom Drag",
+        "Pincer Shuffle",
+        "Blank Cut",
+        "Painter",
+        "Mirror Glimpse",
+        "Fan Signal",
+        "Second Deal",
+        "Palm Glimpse",
+        "Stained Deck",
+        "Shark Deal",
+        "Erdnase Shuffle",
+    },
+
+    "viable_tricks": {
+        "The Bottle of Cahors",
+        "The Dishevelled Gatherer",
+        "The Indiscreet Fingers",
+        "The Indiscreet Thief",
+        "The Bottle of Bordeaux",
+        "The Stolen Card",
+        "The Bottle of Burgundy",
+        "The Shiner",
+        "The Bent Card",
+        "The Oblivious Stooge",
+        "The Constant Gatherer",
+        "The Baby False Shuffle",
+        "The Stacked Shuffle",
+        "The Stealthy Painter",
+        "The Brush and The Fan",
+        "The Beginner Stack",
+        "The Improvised Painter",
+        "The Mirror and The Fan",
+        "The Bent Dealer",
+        "The Transparent Stack",
+        "The Smeared Fan",
+        "The Comte's Gambit",
+        "The Erdnase Stack",
+        "The Expert Dealer",
+    }
+}
+
+def get_item_table(is_split) -> List[ItemDict]:
+    if is_split:
+        return item_table + split_item_table
+    else:
+        return item_table + combined_item_table
+
+def get_all_items() -> List[ItemDict]:
+    return item_table + combined_item_table + split_item_table
