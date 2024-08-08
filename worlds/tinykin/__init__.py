@@ -16,7 +16,7 @@ class TinykinWorld(World):
     Tinykin.
     """
 
-    game: str = "Tinykin"
+    game = "Tinykin"
     web = TinykinWeb()
     data_version = 2
 
@@ -31,12 +31,6 @@ class TinykinWorld(World):
 
     required_client_version = (0, 4, 4)
 
-    def __init__(self, multiworld, player):
-        super(TinykinWorld, self).__init__(multiworld, player)
-
-    def set_rules(self):
-        create_rules()
-
     def create_item(self, name: str) -> "TinykinItem":
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id - 1
@@ -47,18 +41,8 @@ class TinykinWorld(World):
         return TinykinItem(event, ItemClassification.progression_skip_balancing, None, self.player)
 
     def create_items(self) -> None:
-        skipped_items = []
-        additional_junk = 0
-
-        for item, count in self.multiworld.start_inventory[self.player].value.items():
-            for _ in range(count):
-                skipped_items.append(item)
-                additional_junk += 1
-
-        counter = Counter(skipped_items)
-
         for item in item_table:
-            count = item["count"] - counter[item["name"]]
+            count = item["count"]
             
             if count <= 0:
                 continue
@@ -66,7 +50,7 @@ class TinykinWorld(World):
                 for i in range(count):
                     self.multiworld.itempool.append(self.create_item(item["name"]))
 
-        junk = 45
+        junk = 0
         self.multiworld.itempool += [self.create_item("Nothing") for _ in range(junk)]
 
     def create_regions(self) -> None:
@@ -115,6 +99,7 @@ class TinykinWorld(World):
 
         settings = {
             "goal": int(options.goal),
+            "tinykin_unlocks": int(options.tinykin_unlocks),
         }
     
         slot_data = {
