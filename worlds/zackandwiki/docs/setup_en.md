@@ -56,3 +56,14 @@ AP Quest has a fully functional map tracker that supports auto-tracking.
 3. Open PopTracker, and load the APQuest pack.
 4. For autotracking, click on the "AP" symbol at the top.
 5. Enter the Archipelago server address (the one you connected your client to), slot name, and password.
+
+
+
+
+REAL INSTRUCTIONS:
+install apworld.
+
+Geckocode:
+04000010 ABCDEF12
+
+run client

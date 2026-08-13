@@ -5,7 +5,7 @@ import kvui
 import traceback
 
 from collections.abc import Sequence
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 import dolphin_memory_engine as dme
 
@@ -13,6 +13,7 @@ from CommonClient import ClientCommandProcessor, CommonContext, get_base_parser,
 from worlds.LauncherComponents import launch
 from .names import Game as G, Dolphin as D, Items as I
 from .items import ITEM_NAME_TO_ID, item_table
+from .addresses import GECKO_CODE_ADR, GECKO_CODE_INS, GECKO_CODE_START, MEMORY_START, creature_offsets
 
 
 def main(*args: str) -> None:
@@ -39,10 +40,10 @@ def main(*args: str) -> None:
         if ctx.dolphin_sync_task:
             await ctx.dolphin_sync_task
 
-    import colorama
-
     parser = get_base_parser()
     parsed_args = parser.parse_args(args)
+
+    import colorama
 
     colorama.init()
     asyncio.run(_main(parsed_args.connect, parsed_args.password))
@@ -60,6 +61,8 @@ class ZaWContext(CommonContext):
     command_processor = ZaWCommandProcessor
     game: str = G.GAME
     items_handling: int = 0b111
+
+    instructions: Dict[hex, hex] = {}
 
     def __init__(self, server_address: Optional[str], password: Optional[str]) -> None:
         super().__init__(server_address, password)
@@ -84,14 +87,28 @@ class ZaWContext(CommonContext):
                 self.auth = await self.console_input()
 
     async def enable_bell(self):
+        allItems: list[int] = []
         for item in self.items_received:
             name = self.item_names.lookup_in_game(item.item)
             itemID = ITEM_NAME_TO_ID[name]
+            allItems.append(itemID)
 
-            if itemID == item_table[I.SNAKE].id:
-                dme.write_byte(0x80047bc4, 0x41820050)
+        for creature in creature_offsets:
+            if item_table[creature].id in allItems:
+                if dme.read_word(MEMORY_START + creature_offsets[creature].offset) != creature_offsets[creature].originalAdd:
+                    self.instructions.update({creature_offsets[creature].offset: creature_offsets[creature].originalAdd})
             else:
-                dme.write_byte(0x80047bc4, 0x48000050)
+                if dme.read_word(MEMORY_START + creature_offsets[creature].offset) != creature_offsets[creature].modAdd:
+                    self.instructions.update({creature_offsets[creature].offset: creature_offsets[creature].modAdd})
+
+    async def modify_instructions(self):
+        if len(self.instructions) > 0:
+            add = next(iter(self.instructions))
+            ins = self.instructions[add]
+            dme.write_word(GECKO_CODE_ADR, GECKO_CODE_START + add)
+            dme.write_word(GECKO_CODE_INS, ins)
+            self.instructions.pop(add)
+            self.sleep_time = 0.1
 
     def on_package(self, cmd: str, args: dict[str, Any]) -> None:
         return
@@ -125,6 +142,8 @@ async def dolphin_sync_task(ctx: ZaWContext) -> None:
                 if ctx.slot is not None:
                     # Loop
                     await ctx.enable_bell()
+                    await ctx.modify_instructions()
+                sleep_time = 0.1
             else:
                 if ctx.dolphin_status == D.CONNECTION_CONNECTED_STATUS:
                     logger.info("Connection to Dolphin lost, reconnecting...")
